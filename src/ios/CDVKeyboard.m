@@ -195,7 +195,7 @@ static IMP WKOriginalImp;
     // the case where the user disabled shrinkView while the keyboard is showing.
     // The webview should always be able to return to full size
     CGRect keyboardIntersection = CGRectIntersection(screen, keyboard);
-    if (CGRectContainsRect(screen, keyboardIntersection) && !CGRectIsEmpty(keyboardIntersection) && _shrinkView && keyboardIntersection.size.height > 0 ) {
+    if (CGRectContainsRect(screen, keyboardIntersection) && !CGRectIsEmpty(keyboardIntersection) && _shrinkView && ( keyboardIntersection.size.height > 0 || !self.keyboardIsVisible ) ) {
         screen.size.height -= keyboardIntersection.size.height;
         self.webView.scrollView.scrollEnabled = !self.disableScrollingInShrinkView;
     }
